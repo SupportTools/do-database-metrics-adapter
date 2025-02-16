@@ -72,7 +72,19 @@ func forwardRequest(w http.ResponseWriter, r *http.Request, endpoint, username, 
 	}
 	log.Debug("Final metrics endpoint: ", endpoint)
 
-	req, err := http.NewRequest("GET", endpoint+"/metrics", nil)
+	// Forward the original request's query parameters
+	targetURL := endpoint + "/metrics"
+	if r.URL.RawQuery != "" {
+		targetURL += "?" + r.URL.RawQuery
+	}
+
+	req, err := http.NewRequest("GET", targetURL, nil)
+	// Copy relevant headers from the original request
+	for header, values := range r.Header {
+		for _, value := range values {
+			req.Header.Add(header, value)
+		}
+	}
 	if err != nil {
 		http.Error(w, "Error creating request: "+err.Error(), http.StatusInternalServerError)
 		log.Error("Failed to create request: ", err)
