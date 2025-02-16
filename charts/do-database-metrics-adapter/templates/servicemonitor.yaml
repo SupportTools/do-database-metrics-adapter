@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "do-database-metrics-adapter.fullname" . }}
+  labels:
+    app: do-database-metrics-adapter
+    component: database-metrics-adapter
+    instance: {{ .Release.Name | quote }}
+spec:
+  endpoints:
+    - interval: {{ .Values.monitoring.interval | default "15s" }}
+      port: metrics
+  selector:
+    matchLabels:
+      app: do-database-metrics-adapter
+      component: database-metrics-adapter
+      instance: {{ .Release.Name | quote }}

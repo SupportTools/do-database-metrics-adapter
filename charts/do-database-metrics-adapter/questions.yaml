@@ -1,0 +1,28 @@
+questions:
+  - variable: settings.debug
+    default: false
+    description: "Enable debug logging for detailed output."
+    label: "Enable Debug Logging"
+    type: bool
+    group: "Debug Settings"
+
+  - variable: service.port
+    default: 9090
+    description: "Port on which the server will listen for incoming requests."
+    label: "Server Port"
+    type: int
+    group: "Settings"
+
+  - variable: settings.do_token
+    default: ""
+    description: "DigitalOcean API token for accessing the database metrics."
+    label: "DigitalOcean API Token"
+    type: string
+    group: "Settings"
+
+  - variable: settings.database_name
+    default: "example-db-0.c.db.ondigitalocean.com"
+    description: "Name of the database to store the metrics in."
+    label: "Database Name"
+    type: string
+    group: "Settings"

@@ -1,0 +1,17 @@
+apiVersion: v2
+name: do-database-metrics-adapter
+version: ${CHART_VERSION}
+appVersion: ${APP_VERSION}
+description: do-database-metrics-adapter is an adapter for the Kubernetes Metrics API that allows you to collect metrics from DigitalOcean Managed Databases.
+keywords:
+  - kubernetes
+  - backup
+  - metrics
+  - digitalocean
+home: https://support.tools
+sources:
+  - https://github.com/supporttools/do-database-metrics-adapter
+maintainers:
+  - name: Matt Mattox
+    email: mmattox@support.tools
+icon: https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/SVG/DO_Logo_icon_blue.svg
